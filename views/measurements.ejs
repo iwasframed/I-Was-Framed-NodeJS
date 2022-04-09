@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="post">
+    <h2>Frame Border API /POST
+    </h2>
+    <div class="inputs">
+      <label for="FrameWidth">Frame Width:</label>
+      <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="FrameWidth" id="FrameWidth" required><br><br>
+    <label for="FrameWidthFraction">Frame Width Fraction:</label>
+    <select name="FrameWidthFraction" id="FrameWidthFraction" required>
+      <option value="0">0</option>
+          <option value="0.0625">1/16</option>
+              <option value="0.0125">1/8</option>
+                  <option value="0.1875">3/16</option>
+                  <option value="0.25">1/4</option>
+                  <option value="0.3125">5/16</option>
+                  <option value="0.375">3/8</option>
+                  <option value="0.4375">7/16</option>
+                  <option value="0.50">1/2</option>
+                  <option value="0.5625">9/16</option>
+                  <option value="0.625">5/8</option>
+                  <option value="0.6875">11/16</option>
+                  <option value="0.75">3/4</option>
+                  <option value="0.8125">3/16</option>
+                  <option value="0.875">7/8</option> 
+                  <option value="0.9375">15/16</option>
+  </select><br><br>
+    <label for="FrameHeight">Frame Height:</label>
+    <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="FrameHeight" id="FrameHeight" required><br><br>
+    <label for="FrameHeightFraction">Frame Height Fraction:</label>
+    <select name="FrameHeightFraction" id="FrameHeightFraction" required>
+      <option value="0">0</option>
+          <option value="0.0625">1/16</option>
+              <option value="0.0125">1/8</option>
+                  <option value="0.1875">3/16</option>
+                  <option value="0.25">1/4</option>
+                  <option value="0.3125">5/16</option>
+                  <option value="0.375">3/8</option>
+                  <option value="0.4375">7/16</option>
+                  <option value="0.50">1/2</option>
+                  <option value="0.5625">9/16</option>
+                  <option value="0.625">5/8</option>
+                  <option value="0.6875">11/16</option>
+                  <option value="0.75">3/4</option>
+                  <option value="0.8125">3/16</option>
+                  <option value="0.875">7/8</option> 
+                  <option value="0.9375">15/16</option>
+  </select><br><br>
+    <label for="PictureWidth">Picture Width</label>
+    <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="PictureWidth" id="PictureWidth" required><br><br>
+    <label for="PictureWidthFraction">Picture Width Fraction:</label>
+    <select name="PictureWidthFraction" id="PictureWidthFraction" required>
+      <option value="0">0</option>
+          <option value="0.0625">1/16</option>
+              <option value="0.0125">1/8</option>
+                  <option value="0.1875">3/16</option>
+                  <option value="0.25">1/4</option>
+                  <option value="0.3125">5/16</option>
+                  <option value="0.375">3/8</option>
+                  <option value="0.4375">7/16</option>
+                  <option value="0.50">1/2</option>
+                  <option value="0.5625">9/16</option>
+                  <option value="0.625">5/8</option>
+                  <option value="0.6875">11/16</option>
+                  <option value="0.75">3/4</option>
+                  <option value="0.8125">3/16</option>
+                  <option value="0.875">7/8</option> 
+                  <option value="0.9375">15/16</option>
+  </select><br><br>
+    <label for="PictureHeight">Picture Height :</label>
+    <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="PictureHeight" id="PictureHeight" required><br><br>
+    <label for="PictureHeightFraction">Picture Height Fraction:</label>
+    <select name="PictureHeightFraction" id="PictureHeightFraction" required>
+      <option value="0">0</option>
+          <option value="0.0625">1/16</option>
+              <option value="0.0125">1/8</option>
+                  <option value="0.1875">3/16</option>
+                  <option value="0.25">1/4</option>
+                  <option value="0.3125">5/16</option>
+                  <option value="0.375">3/8</option>
+                  <option value="0.4375">7/16</option>
+                  <option value="0.50">1/2</option>
+                  <option value="0.5625">9/16</option>
+                  <option value="0.625">5/8</option>
+                  <option value="0.6875">11/16</option>
+                  <option value="0.75">3/4</option>
+                  <option value="0.8125">3/16</option>
+                  <option value="0.875">7/8</option> 
+                  <option value="0.9375">15/16</option>
+  </select><br><br>
+    <label for="MatOverlap">Mat Overlap:</label>
+    <select name="MatOverlap" id="MatOverlap" required>
+      <option value="0">0</option>
+          <option value="0.0625">1/16</option>
+              <option value="0.0125">1/8</option>
+                  <option value="0.1875">3/16</option>
+                  <option value="0.25">1/4</option>
+                  <option value="0.3125">5/16</option>
+                  <option value="0.375">3/8</option>
+                  <option value="0.4375">7/16</option>
+                  <option value="0.50">1/2</option>
+                  <option value="0.5625">9/16</option>
+                  <option value="0.625">5/8</option>
+                  <option value="0.6875">11/16</option>
+                  <option value="0.75">3/4</option>
+                  <option value="0.8125">3/16</option>
+                  <option value="0.875">7/8</option> 
+                  <option value="0.9375">15/16</option>
+  </select>
+
+    </div>
+    <div class="calculate">
+      <button class="calculate">Calculate</button>
+    </div>
+  </form>
+</body>
+</html>

@@ -1,0 +1,221 @@
+body {
+    background-color: #555;
+    font-size: 24px;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+.wrapper {
+    border-radius: 15px;
+    width: 800px;
+    margin: 0 auto;
+    background-color: #E5E4E2;
+    padding: 10px;
+}
+
+header, footer {
+    background-color: ghostwhite;
+    padding: 20px;
+}
+
+main {
+    background-color: ghostwhite;
+    padding: 50px;
+}
+
+.layout-sidebar {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 2fr 1fr;
+}
+
+.button-one {
+  background-color: gray; /* background color */
+}
+.button-two {
+  background-color: gray;
+}
+.button-three {
+  background-color: gray;
+}
+.button-four {
+  background-color: gray;
+}
+.button-five {
+  background-color: gray;
+}
+.button-one,
+.button-two,
+.button-three,
+.button-four,
+.button-five {
+  color: #1d1d1d; /* text color */
+  margin: 5px;
+  display: inline-block;
+  border-radius: 5px; /* square corners */
+  padding: 8px 8px; /* space around text */
+  text-transform: uppercase; /* all capital letters */
+  font-weight: 700;
+  font-size: .75em;
+  letter-spacing: 1px;
+  -moz-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.button-one:hover,
+.button-two:hover,
+.button-three:hover,
+.button-four:hover,
+.button-five:hover {
+  background: #fff;
+}
+
+
+/*Fieldset and legend */
+
+fieldset {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: solid 1px #ccc;
+  border-radius: 6px;
+  min-width: P 200px;
+}
+
+legend {
+  padding: 0 .25em;
+  color: #999;
+}
+
+
+/* Labels */
+
+label {
+  font-size: 1em;
+  display: block;
+  margin-top: 1em;
+}
+
+.checks label {
+  margin-top: 0;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+/* Select */
+
+select {
+  padding: .5em;
+  border: solid 1px #999;
+  background-color: #D3D3D3;
+  font-family: 'Lato', sans-serif;
+  font-size: .8em;
+}
+
+#frameWidthFraction, #frameHeightFraction, #pictureWidthFraction, #pictureHeightFraction, #matOverlapFraction {
+  margin-left: 1em;
+  padding: .75em;
+  margin-top: auto;
+  margin-bottom: auto;
+  }
+
+
+/* Inputs and textarea */
+
+input {
+  padding: .5em;
+  border: solid 1px #999;
+  background-color: #D3D3D3
+}
+
+input[type="number"],
+input[type="text"] {
+  font-size:24px;
+  width: 10em;
+  background-color: #D3D3D3
+}
+
+textarea {
+  min-height: 8em;
+  min-width: 100%;
+  padding: .5em;
+  border: solid 1px #999;
+  background-color: #D3D3D3
+}
+
+/* radio buttons and checkboxes */
+
+.checks {
+  margin-bottom: 1em;
+}
+
+.checks p {
+  margin-bottom: 0;
+}
+
+input[type="checkbox"]+label,
+input[type="radio"]+label {
+  display: inline-block;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+input[type="radio"] {
+  margin-left: 1.5em;
+  margin-right: 0;
+}
+
+input[type="radio"]:first-of-type {
+  margin-left: 0;
+}
+
+#height {
+  text-align: left;
+  margin-top: 250px;
+  margin-left: 4px;
+}
+
+/* Submit Button */
+
+input[type="button"] {
+  padding: .5em 1em;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: .8em;
+}
+
+/* Reset Button */
+
+input[type="reset"] {
+  padding: .5em 1em;
+  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: .8em;
+}
+
+
+/* Large screen rules */
+
+@media screen and (min-width: 500px) {
+  legend {
+    font-size: 1.75em;
+  }
+  fieldset {
+    width: 40%;
+    min-width: 500px;
+    margin: auto;
+  }
+  .checks label {
+    display: inline-block;
+    padding-top: .5em;
+    margin-top: 0;
+    margin-right: .5em;
+  }
+}

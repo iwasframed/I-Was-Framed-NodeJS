@@ -1,0 +1,10 @@
+{
+    "database": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "FuckH8v00Fn61!",
+        "database": "iwasframed"
+    },
+    "secret": "j64gsxqezv02qaul1k8nusap2iongqfg"
+}
