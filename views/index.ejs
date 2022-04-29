@@ -15,11 +15,11 @@
     </head>
 
 <body>
-    <sides>
+    
         
 <section>
     
-    <form id="frm1" action="/index.html" method="post">
+    <form id="frm1" action="/index.html" onreset="resetOutput()" method="post">
 
 <fieldset>
 
@@ -31,7 +31,7 @@ I Was Framed Calculator
 
 
 
-<label for="frameWidth">Frame Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="frameWidth" id="frameWidth"><select name="frameWidthFraction" id="frameWidthFraction">
+<label for="frameWidth">Frame Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.which == 8 || event.which == 0 || event.which == 13) ? null : event.which >= 48 && event.which <= 57" step="any" min="0" name="frameWidth" id="frameWidth"><select name="frameWidthFraction" id="frameWidthFraction">
     <option value="0">0</option>
         <option value="0.0625">1/16</option>
             <option value="0.0125">1/8</option>
@@ -92,7 +92,7 @@ I Was Framed Calculator
                 <option value="0.9375">15/16</option>
 </select>
 
-<label for="pictureHeight">Picture Height:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="pictureHeight" id="pictureHeight">
+<label for="pictureHeight">Picture Height:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.which == 8 || event.which == 0 || event.which == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="pictureHeight" id="pictureHeight">
 
 
 <select name="pictureHeightFraction" id="pictureHeightFraction">
@@ -115,7 +115,7 @@ I Was Framed Calculator
                 <option value="0.9375">15/16</option>
 </select><br>
 
-<label for="matOverlap">Mat Overlap:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="matOverlap" id="matOverlap"><select name="matOverlapFraction" id="matOverlapFraction">
+<label for="matOverlap">Mat Overlap:</label><input type="number" title="numbers should be in inches" onkeypress="(event.which == 8 || event.which == 0 || event.which == 13) ? null : event.which >= 48 && event.which <= 57" step="any" min="0" name="matOverlap" id="matOverlap"><select name="matOverlapFraction" id="matOverlapFraction">
     
     <option value="0">0</option>
         <option value="0.0625">1/16</option>
@@ -139,6 +139,8 @@ I Was Framed Calculator
 
 
 <br>
+<br>
+<input type="reset" onreset="resetOutput()" value="Reset">
 <input type="button" onclick="calc()" value="Calculate" name="cmdCalc"/>
 
 </fieldset>
@@ -147,7 +149,8 @@ I Was Framed Calculator
 
 </section>
 
-<script src="https://unpkg.com/fractional@1.0.0/index.js"></script>
+<script src="https://iwasframed.com/calculator/fraction.js/index.js"></script>
+
 
 <script>
 
@@ -200,8 +203,12 @@ function calc()
 
 }
 
+function resetOutput(){
+    document.getElementById('width').innerHTML = ""
+    document.getElementById('height').innerHTML = ""
+}
+
 </script>
-        
 
     <div style="margin:0 auto;text-align:center;width:400px;height:50px;border:5px solid #000; margin-top: 20px; margin-bottom: 50px;padding-bottom:75%;background-color:gray" id="rectangle">
         <center>
@@ -211,7 +218,8 @@ function calc()
         <div id="height"></div>
     </div>
 
-    </sides>
+
+
 </body>
 
 </html>
