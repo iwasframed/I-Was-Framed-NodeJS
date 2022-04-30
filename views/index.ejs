@@ -19,7 +19,7 @@
         
 <section>
     
-    <form id="frm1" action="/index.html" onreset="resetOutput()" method="post">
+    <form id="frm1" action="index.html" onreset="resetOutput()" method="post">
 
 <fieldset>
 
@@ -31,7 +31,7 @@ I Was Framed Calculator
 
 
 
-<label for="frameWidth">Frame Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.which == 8 || event.which == 0 || event.which == 13) ? null : event.which >= 48 && event.which <= 57" step="any" min="0" name="frameWidth" id="frameWidth"><select name="frameWidthFraction" id="frameWidthFraction">
+<label for="frameWidth">Frame Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="frameWidth" id="frameWidth"><select name="frameWidthFraction" id="frameWidthFraction">
     <option value="0">0</option>
         <option value="0.0625">1/16</option>
             <option value="0.0125">1/8</option>
@@ -115,7 +115,7 @@ I Was Framed Calculator
                 <option value="0.9375">15/16</option>
 </select><br>
 
-<label for="matOverlap">Mat Overlap:</label><input type="number" title="numbers should be in inches" onkeypress="(event.which == 8 || event.which == 0 || event.which == 13) ? null : event.which >= 48 && event.which <= 57" step="any" min="0" name="matOverlap" id="matOverlap"><select name="matOverlapFraction" id="matOverlapFraction">
+<label for="matOverlap">Mat Overlap:</label><input type="number" title="numbers should be in inches" onkeypress="(event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="matOverlap" id="matOverlap"><select name="matOverlapFraction" id="matOverlapFraction">
     
     <option value="0">0</option>
         <option value="0.0625">1/16</option>
@@ -140,7 +140,7 @@ I Was Framed Calculator
 
 <br>
 <br>
-<input type="reset" onreset="resetOutput()" value="Reset">
+<input type="reset" value="Reset">
 <input type="button" onclick="calc()" value="Calculate" name="cmdCalc"/>
 
 </fieldset>
