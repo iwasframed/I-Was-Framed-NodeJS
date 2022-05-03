@@ -1,3 +1,4 @@
+'use strict';
 /*
 fraction.js
 A Javascript fraction library.
@@ -69,45 +70,57 @@ THE SOFTWARE.
  *      new Fraction('2 3/4') --> 11/4  (prints as 2 3/4)
  *
  */
-Fraction = function(numerator, denominator)
+var Fraction = function(numerator, denominator)
 {
     /* double argument invocation */
     if (typeof numerator !== 'undefined' && denominator) {
-        if (typeof(numerator) === 'number' && typeof(denominator) === 'number') {
+        if (
+			(typeof(  numerator) === 'number' ||   numerator instanceof Number)
+		&&
+			(typeof(denominator) === 'number' || denominator instanceof Number)
+		){
             this.numerator = numerator;
             this.denominator = denominator;
-        } else if (typeof(numerator) === 'string' && typeof(denominator) === 'string') {
+        } else if (
+			(typeof(  numerator) === 'string' ||   numerator instanceof String)
+		&&
+			(typeof(denominator) === 'string' || denominator instanceof String)
+		) {
             // what are they?
             // hmm....
-            // assume they are ints?
-            this.numerator = parseInt(numerator);
-            this.denominator = parseInt(denominator);
+            // assume they are floats?
+            this.numerator = parseFloat(numerator.replace(",","."));
+            this.denominator = parseFloat(denominator.replace(",","."));
         }
+        // TODO: should we handle cases when one argument is String and another is Number?
     /* single-argument invocation */
     } else if (typeof denominator === 'undefined') {
-        num = numerator; // swap variable names for legibility
-        if (typeof(num) === 'number') {  // just a straight number init
+        var num = numerator; // swap variable names for legibility
+		if (num instanceof Fraction) {
+			this.numerator = num.numerator;
+			this.denominator = num.denominator;
+		} else if (typeof(num) === 'number' || num instanceof Number) {  // just a straight number init
             this.numerator = num;
             this.denominator = 1;
-        } else if (typeof(num) === 'string') {
+        } else if (typeof(num) === 'string' || num instanceof String) {
             var a, b;  // hold the first and second part of the fraction, e.g. a = '1' and b = '2/3' in 1 2/3
                        // or a = '2/3' and b = undefined if we are just passed a single-part number
-            var arr = num.split(' ')
-            if (arr[0]) a = arr[0]
-            if (arr[1]) b = arr[1]
+            var arr = num.split(' ');
+            if (arr[0]) a = arr[0];
+            if (arr[1]) b = arr[1];
             /* compound fraction e.g. 'A B/C' */
             //  if a is an integer ...
             if (a % 1 === 0 && b && b.match('/')) {
                 return (new Fraction(a)).add(new Fraction(b));
             } else if (a && !b) {
                 /* simple fraction e.g. 'A/B' */
-                if (typeof(a) === 'string' && a.match('/')) {
+                if ((typeof(a) === 'string' || a instanceof String) && a.match('/')) {
                     // it's not a whole number... it's actually a fraction without a whole part written
                     var f = a.split('/');
                     this.numerator = f[0]; this.denominator = f[1];
                 /* string floating point */
-                } else if (typeof(a) === 'string' && a.match('\.')) {
-                    return new Fraction(parseFloat(a));
+                } else if ((typeof(a) === 'string' || a instanceof String) && a.match('\.')) {
+                    return new Fraction(parseFloat(a.replace(",",".")));
                 /* whole number e.g. 'A' */
                 } else { // just passed a whole number as a string
                     this.numerator = parseInt(a);
@@ -127,24 +140,57 @@ Fraction.prototype.clone = function()
     return new Fraction(this.numerator, this.denominator);
 }
 
-
 /* pretty-printer, converts fractions into whole numbers and fractions */
 Fraction.prototype.toString = function()
 {
-    if (this.denominator==='NaN') return 'NaN'
-    var wholepart = (this.numerator/this.denominator>0) ?
-      Math.floor(this.numerator / this.denominator) :
-      Math.ceil(this.numerator / this.denominator)
-    var numerator = this.numerator % this.denominator 
-    var denominator = this.denominator;
-    var result = []; 
-    if (wholepart != 0)  
-        result.push(wholepart);
-    if (numerator != 0)  
-        result.push(((wholepart===0) ? numerator : Math.abs(numerator)) + '/' + denominator);
-    return result.length > 0 ? result.join(' ') : 0;
+	if (isNaN(this.denominator))
+//	if (this.denominator !== this.denominator) //They say it would be faster. (?)
+		return 'NaN';
+    var result = '';
+    if ((this.numerator < 0) != (this.denominator < 0))
+        result = '-';
+    var numerator = Math.abs(this.numerator);
+    var denominator = Math.abs(this.denominator);
+
+    var wholepart = Math.floor(numerator / denominator);
+    numerator = numerator % denominator;
+    if (wholepart != 0)
+        result += wholepart;
+    if (numerator != 0)
+    {
+		if(wholepart != 0)
+			result+=' ';
+        result += numerator + '/' + denominator;
+	}
+    return result.length > 0 ? result : '0';
 }
 
+/* pretty-printer to support TeX notation (using with MathJax, KaTeX, etc) */
+Fraction.prototype.toTeX = function(mixed)
+{
+	if (isNaN(this.denominator))
+		return 'NaN';
+    var result = '';
+    if ((this.numerator < 0) != (this.denominator < 0))
+        result = '-';
+    var numerator = Math.abs(this.numerator);
+    var denominator = Math.abs(this.denominator);
+
+    if(!mixed){
+		//We want a simple fraction, without wholepart extracted
+		if(denominator === 1)
+			return result + numerator;
+		else
+			return result + '\\frac{' + numerator + '}{' + denominator + '}';
+	}
+    var wholepart = Math.floor(numerator / denominator);
+    numerator = numerator % denominator;
+    if (wholepart != 0)
+        result += wholepart;
+    if (numerator != 0)
+        result += '\\frac{' + numerator + '}{' + denominator + '}';
+    return result.length > 0 ? result : '0';
+}
 
 /* destructively rescale the fraction by some integral factor */
 Fraction.prototype.rescale = function(factor)
@@ -154,7 +200,6 @@ Fraction.prototype.rescale = function(factor)
     return this;
 }
 
-
 Fraction.prototype.add = function(b)
 {
     var a = this.clone();
@@ -163,11 +208,9 @@ Fraction.prototype.add = function(b)
     } else {
         b = new Fraction(b);
     }
-    td = a.denominator;
+    var td = a.denominator;
     a.rescale(b.denominator);
-    b.rescale(td);
-
-    a.numerator += b.numerator;
+    a.numerator += b.numerator * td;
 
     return a.normalize();
 }
@@ -181,11 +224,9 @@ Fraction.prototype.subtract = function(b)
     } else {
         b = new Fraction(b);
     }
-    td = a.denominator;
+    var td = a.denominator;
     a.rescale(b.denominator);
-    b.rescale(td);
-
-    a.numerator -= b.numerator;
+    a.numerator -= b.numerator * td;
 
     return a.normalize();
 }
@@ -244,7 +285,7 @@ Fraction.prototype.normalize = (function()
 
     var isFloat = function(n)
     {
-        return (typeof(n) === 'number' && 
+        return (typeof(n) === 'number' &&
                 ((n > 0 && n % 1 > 0 && n % 1 < 1) || 
                  (n < 0 && n % -1 < 0 && n % -1 > -1))
                );
@@ -259,6 +300,18 @@ Fraction.prototype.normalize = (function()
             return Math.round(n*scalar)/scalar;
         }
     }
+    // added for the case where decimal is ending with .999999 ex 8.999999999
+    var makeString = function(n) {
+        let ans = n.toString();
+        // no decimal point is present, then we add a decimal point
+        if (ans.indexOf(".") === -1) {
+          return ans  + ".0";
+        }
+        // else return as it is
+        return ans;
+      }
+    
+    
         
     return (function() {
 
@@ -271,14 +324,14 @@ Fraction.prototype.normalize = (function()
          */
         if (isFloat(this.denominator)) {
             var rounded = roundToPlaces(this.denominator, 9);
-            var scaleup = Math.pow(10, rounded.toString().split('.')[1].length);
+            var scaleup = Math.pow(10, makeString(rounded).split('.')[1].length);
             this.denominator = Math.round(this.denominator * scaleup); // this !!! should be a whole number
             //this.numerator *= scaleup;
             this.numerator *= scaleup;
         } 
         if (isFloat(this.numerator)) {
             var rounded = roundToPlaces(this.numerator, 9);
-            var scaleup = Math.pow(10, rounded.toString().split('.')[1].length);
+            var scaleup = Math.pow(10, makeString(rounded).split('.')[1].length);
             this.numerator = Math.round(this.numerator * scaleup); // this !!! should be a whole number
             //this.numerator *= scaleup;
             this.denominator *= scaleup;
@@ -286,7 +339,7 @@ Fraction.prototype.normalize = (function()
         var gcf = Fraction.gcf(this.numerator, this.denominator);
         this.numerator /= gcf;
         this.denominator /= gcf;
-        if ((this.numerator < 0 && this.denominator < 0) || (this.numerator > 0 && this.denominator < 0)) {
+        if (this.denominator < 0) {
             this.numerator *= -1;
             this.denominator *= -1;
         }
@@ -296,44 +349,39 @@ Fraction.prototype.normalize = (function()
 })();
 
 
-/* Takes two numbers and returns their greatest common factor.
- */
-Fraction.gcf = function(a, b)
-{
+/* Takes two numbers and returns their greatest common factor. */
+//Adapted from Ratio.js
+Fraction.gcf = function(a, b) {
+    if (arguments.length < 2) {
+        return a;
+    }
+    var c;
+    a = Math.abs(a);
+    b = Math.abs(b);
+/*  //It seems to be no need in these checks
+    // Same as isNaN() but faster
+    if (a !== a || b !== b) {
+        return NaN;
+    }
+    //Same as !isFinite() but faster
+    if (a === Infinity || a === -Infinity || b === Infinity || b === -Infinity) {
+        return Infinity;
+     }
+     // Checks if a or b are decimals
+     if ((a % 1 !== 0) || (b % 1 !== 0)) {
+         throw new Error("Can only operate on integers");
+     }
+*/
 
-    var common_factors = [];
-    var fa = Fraction.primeFactors(a);
-    var fb = Fraction.primeFactors(b);
-    // for each factor in fa
-    // if it's also in fb
-    // put it into the common factors
-    fa.forEach(function (factor) 
-    { 
-        var i = fb.indexOf(factor);
-        if (i >= 0) {
-            common_factors.push(factor);
-            fb.splice(i,1); // remove from fb
-        }
-    });
-
-    if (common_factors.length === 0)
-        return 1;
-
-    var gcf = (function() {
-        var r = common_factors[0];
-        var i;
-        for (i=1;i<common_factors.length;i++)
-        {
-            r = r * common_factors[i];
-        }
-        return r;
-    })();
-
-    return gcf;
-
+    while (b) {
+        c = a % b;
+        a = b;
+        b = c;
+    }
+    return a;
 };
 
-
+//Not needed now
 // Adapted from: 
 // http://www.btinternet.com/~se16/js/factor.htm
 Fraction.primeFactors = function(n) 
@@ -364,4 +412,28 @@ Fraction.primeFactors = function(n)
     return factors;                  // Return the prime factors
 }
 
-module.exports.Fraction = Fraction
+
+Fraction.prototype.snap = function(max, threshold) {
+    if (!threshold) threshold = .0001;
+    if (!max) max = 100;
+
+    var negative = (this.numerator < 0);
+    var decimal = this.numerator / this.denominator;
+    var fraction = Math.abs(decimal % 1);
+    var remainder = negative ? Math.ceil(decimal) : Math.floor(decimal);
+
+    for(var denominator = 1; denominator <= max; ++denominator) {
+        for(var numerator = 0; numerator <= max; ++numerator) {
+            var approximation = Math.abs(numerator/denominator);
+            if (Math.abs(approximation - fraction) < threshold) {
+                return new Fraction(remainder * denominator + numerator * (negative ? -1 : 1), denominator);
+            }
+        }
+    }
+
+    return new Fraction(this.numerator, this.denominator);
+};
+
+/* If not in browser */
+if(typeof module !== "undefined")
+    module.exports.Fraction = Fraction

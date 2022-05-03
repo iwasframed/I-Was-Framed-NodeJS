@@ -1,10 +1,7 @@
-require('rootpath')();
 const express = require('express');
-const cors = require('cors');
 const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const errorHandler = require('_middleware/error-handler');
 const { send } = require('express/lib/response');
 var fractional = require("./public/js/fraction.js");
 const app = express()
@@ -12,13 +9,6 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
-
-// api routes
-app.use('/users', require('./users/users.controller'));
-
-// global error handler
-app.use(errorHandler);
 
 //Static Files
 app.use(express.static('public'))
@@ -36,8 +26,18 @@ app.get('', (req, res) => {
     res.render('index')
 });
 
+app.get("/register", (req,res) => {
+    res.render('register', { title: 'Register'});
+
+});
+
  app.get("/about", (req,res) => {
     res.render('about', { title: 'About Page'});
+
+});
+
+app.get("/contact", (req,res) => {
+    res.render('contact', { title: 'Contact Us'});
 
 });
 
