@@ -4,6 +4,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const { send } = require('express/lib/response');
 var fractional = require("./public/js/fraction.js");
+var prismjs = require("./public/js/prism.js");
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }));
