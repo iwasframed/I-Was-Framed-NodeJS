@@ -1,0 +1,59 @@
+<body>
+    <fieldset>
+    <legend>API Instructions</legend>
+    <h2>Getting started</h2>
+    Download your favorite <a href="https://rapidapi.com/blog/api-glossary/what-is-a-rest-client-rest-client-defined/">REST API Client</a>.  A REpresentational State Transfer client is one of three components of the REST client-server web application architecture. The three components are the client application, the APIs, which ferry information back and forth between the client application and the web server, and the server upon which the data resides.
+    <p>For your convenience, you can choose a client from this list:</p>
+
+<ul>
+    <li><a href="https://www.postman.com/product/api-client/">Postman</a></li>
+    <li><a href="https://rapidapi.com/products/api-design/">RapidAPI Design by Paw</a></li>
+    <li><a href="https://nightingale.rest/">Nightingale</a></li>
+    <li><a href="https://www.soapui.org/tools/readyapi/">ReadyAPI (SoapUI Pro)</a></li>
+    <li><a href="https://rest-assured.io/">Rest-Assured</a></li>
+    <li><a href="https://insomnia.rest/">Insomnia</a></li>
+</ul>
+
+
+
+<p>The below example will be done using <a href="https://www.postman.com/product/api-client/">Postman</a>.</p>
+    <h2>Route:</h2><p>
+If you've downloaded the application to use on your local machine, then enter the following into your client:<pre><code class="language-plain">localhost:4000/api/calculator</code></pre>
+This is the JSON format to use the API calculator.  'Value' is simply replaced with a number.<pre><code class="language-json">
+{
+    "FrameWidth": value,
+    "FrameWidthFraction": value,
+    "FrameHeight": value,
+    "FrameHeightFraction": value,
+    "PictureWidth": value,
+    "PictureWidthFraction": value,
+    "PictureHeight": value,
+    "PictureHeightFraction": value,
+    "MatOverlap": value
+}
+    </pre></code>
+    <p>This is perhaps an idea which you may have for your project:</p>
+
+<ul>
+    <li>Frame Size:  16" X 20"</li>
+    <li>Picture Size:  11" X 17"</li>
+    <li>Mat Overlap:  1/2"</li>
+</ul>
+The 'value' where a '..Fraction' is requested - a decimal is required, so 1/2" becomes 0.5.  Therefore, the POST request using raw JSON looks like this:<pre><code class="language-json">
+{
+    "FrameWidth": 16,
+    "FrameWidthFraction": 0,
+    "FrameHeight": 20,
+    "FrameHeightFraction": 0,
+    "PictureWidth": 11,
+    "PictureWidthFraction": 0,
+    "PictureHeight": 17,
+    "PictureHeightFraction": 0,
+    "MatOverlap": 0.5
+}
+    </pre></code>
+    The response of the POST request is:
+    <pre><code class="language-json">Width = 2 3/4", Height = 1 3/4"</pre></code>
+    </fieldset>
+      </body>
+    </html>
