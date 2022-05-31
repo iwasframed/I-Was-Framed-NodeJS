@@ -33,14 +33,7 @@ app.get('', (req, res) => {
 
 });
 
-app.get('/about', function(req, res) {
-    var locals = {
-      title: 'About',
-      description: 'About Us',
-      header: 'I Was Framed - About'
-    };
-    res.render('the-view', locals);
-  });
+
 
 app.get("/contact", (req,res) => {
     res.render('contact', { title: 'Contact Us'});
@@ -93,6 +86,16 @@ app.get("/math", (req,res) => {
 
 app.get("/api", (req,res) => {
     res.render('api', { title: 'API Instructions'});
+
+});
+
+app.get("/doublemat", (req,res) => {
+    res.render('doublemat', { title: 'Double Mat'});
+
+});
+
+app.get("/triplemat", (req,res) => {
+    res.render('triplemat', { title: 'Triple Mat'});
 
 });
 

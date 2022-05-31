@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>I Was Framed - Calculator</title>
+
+
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900&display=swap" rel="stylesheet">
+
+        
+
+    </head>
+
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+        
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+        </script>  
+        
+<section>
+    
+    <form id="frm1" action="index.html" onreset="resetOutput()" method="post">
+
+<fieldset>
+
+<legend>
+
+I Was Framed Calculator
+
+</legend>
+
+
+
+<label for="frameWidth">Frame Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="frameWidth" id="frameWidth"><select name="frameWidthFraction" id="frameWidthFraction">
+    <option value="0">0</option>
+        <option value="0.0625">1/16</option>
+            <option value="0.0125">1/8</option>
+                <option value="0.1875">3/16</option>
+                <option value="0.25">1/4</option>
+                <option value="0.3125">5/16</option>
+                <option value="0.375">3/8</option>
+                <option value="0.4375">7/16</option>
+                <option value="0.50">1/2</option>
+                <option value="0.5625">9/16</option>
+                <option value="0.625">5/8</option>
+                <option value="0.6875">11/16</option>
+                <option value="0.75">3/4</option>
+                <option value="0.8125">3/16</option>
+                <option value="0.875">7/8</option> 
+                <option value="0.9375">15/16</option>
+</select>
+
+<label for="frameHeight">Frame Height:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="frameHeight" id="frameHeight"><select name="frameHeightFraction" id="frameHeightFraction">
+    
+    <option value="0">0</option>
+        <option value="0.0625">1/16</option>
+            <option value="0.0125">1/8</option>
+                <option value="0.1875">3/16</option>
+                <option value="0.25">1/4</option>
+                <option value="0.3125">5/16</option>
+                <option value="0.375">3/8</option>
+                <option value="0.4375">7/16</option>
+                <option value="0.50">1/2</option>
+                <option value="0.5625">9/16</option>
+                <option value="0.625">5/8</option>
+                <option value="0.6875">11/16</option>
+                <option value="0.75">3/4</option>
+                <option value="0.8125">3/16</option>
+                <option value="0.875">7/8</option>
+                <option value="0.9375">15/16</option>
+</select>
+
+
+
+<label for="pictureWidth">Picture Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="pictureWidth" id="pictureWidth"><select name="pictureWidthFraction" id="pictureWidthFraction">
+    
+    <option value="0">0</option>
+        <option value="0.0625">1/16</option>
+            <option value="0.0125">1/8</option>
+                <option value="0.1875">3/16</option>
+                <option value="0.25">1/4</option>
+                <option value="0.3125">5/16</option>
+                <option value="0.375">3/8</option>
+                <option value="0.4375">7/16</option>
+                <option value="0.50">1/2</option>
+                <option value="0.5625">9/16</option>
+                <option value="0.625">5/8</option>
+                <option value="0.6875">11/16</option>
+                <option value="0.75">3/4</option>
+                <option value="0.8125">3/16</option>
+                <option value="0.875">7/8</option>
+                <option value="0.9375">15/16</option>
+</select>
+
+<label for="pictureHeight">Picture Height:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.which == 8 || event.which == 0 || event.which == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="pictureHeight" id="pictureHeight">
+
+
+<select name="pictureHeightFraction" id="pictureHeightFraction">
+   
+    <option value="0">0</option>
+        <option value="0.0625">1/16</option>
+            <option value="0.0125">1/8</option>
+                <option value="0.1875">3/16</option>
+                <option value="0.25">1/4</option>
+                <option value="0.3125">5/16</option>
+                <option value="0.375">3/8</option>
+                <option value="0.4375">7/16</option>
+                <option value="0.50">1/2</option>
+                <option value="0.5625">9/16</option>
+                <option value="0.625">5/8</option>
+                <option value="0.6875">11/16</option>
+                <option value="0.75">3/4</option>
+                <option value="0.8125">3/16</option>
+                <option value="0.875">7/8</option>
+                <option value="0.9375">15/16</option>
+</select><br>
+
+<label for="bottomMat">Bottom Mat:</label><input type="number" title="numbers should be in inches" onkeypress="(event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="bottomMat" id="bottomMat"><select name="bottomMatFraction" id="bottomMatFraction">
+    
+    <option value="0">0</option>
+        <option value="0.0625">1/16</option>
+            <option value="0.0125">1/8</option>
+                <option value="0.1875">3/16</option>
+                <option value="0.25">1/4</option>
+                <option value="0.3125">5/16</option>
+                <option value="0.375">3/8</option>
+                <option value="0.4375">7/16</option>
+                <option value="0.50">1/2</option>
+                <option value="0.5625">9/16</option>
+                <option value="0.625">5/8</option>
+                <option value="0.6875">11/16</option>
+                <option value="0.75">3/4</option>
+                <option value="0.8125">3/16</option>
+                <option value="0.875">7/8</option>
+                <option value="0.9375">15/16</option>
+</select>
+
+    <br>
+
+
+<br>
+<br>
+<input type="button" onclick="calc()" value="Calculate" name="cmdCalc"/>
+<input type="reset" value="Reset">
+
+</fieldset>
+
+</form>
+
+</section>
+
+<script src="https://iwasframed.com/calculator/fraction.js/index.js"></script>
+
+
+<script>
+
+function calc()
+
+{
+
+    var frameWidth = document.getElementById('frameWidth').value
+    frameWidth = parseInt(frameWidth)
+    
+    var frameWidthFraction = document.getElementById('frameWidthFraction').value
+    frameWidthFraction = parseFloat(frameWidthFraction)
+        
+    var frameHeight = document.getElementById('frameHeight').value
+    frameHeight = parseInt(frameHeight)
+
+    var frameHeightFraction = document.getElementById('frameHeightFraction').value
+    frameHeightFraction = parseFloat(frameHeightFraction)
+    
+    var pictureWidth = document.getElementById('pictureWidth').value
+    pictureWidth = parseInt(pictureWidth)
+
+    var pictureWidthFraction = document.getElementById('pictureWidthFraction').value
+    pictureWidthFraction = parseFloat(pictureWidthFraction)
+
+    var pictureHeight = document.getElementById('pictureHeight').value
+    pictureHeight = parseInt(pictureHeight)
+
+    var pictureHeightFraction = document.getElementById('pictureHeightFraction').value
+    pictureHeightFraction = parseFloat(pictureHeightFraction)
+
+    var bottomMat = document.getElementById('bottomMat').value
+    bottomMat = parseInt(bottomMat)
+
+    var bottomMatFraction = document.getElementById('bottomMatFraction').value
+    bottomMatFraction = parseFloat(bottomMatFraction)
+
+    if (isNaN(frameWidth) || isNaN(frameHeight) || isNaN(pictureWidth) || isNaN(pictureHeight) || isNaN(bottomMat)) {
+    alert('All fields are required!')
+    return
+}
+
+    var widthdoubletop = ((frameHeight+frameHeightFraction)-(pictureHeight+pictureHeightFraction))/2;
+    var heightdoubletop = ((frameWidth+frameWidthFraction)-(pictureWidth+pictureWidthFraction))/2;
+    var widthdoublebottom = ((frameHeight+frameHeightFraction)-(pictureHeight+pictureHeightFraction))/(2)+(bottomMat+bottomMatFraction);
+    var heightdoublebottom = ((frameWidth+frameWidthFraction)-(pictureWidth+pictureWidthFraction))/(2)+(bottomMat+bottomMatFraction);
+
+    document.getElementById('widthdoubletop').innerHTML = new Fraction(widthdoubletop).toString() + '"';
+    document.getElementById('heightdoubletop').innerHTML = new Fraction(heightdoubletop).toString() + '"';
+    document.getElementById('widthdoublebottom').innerHTML = new Fraction(widthdoublebottom).toString() + '"';
+    document.getElementById('heightdoublebottom').innerHTML = new Fraction(heightdoublebottom).toString() + '"';
+
+   document.getElementById('rectangle').scrollIntoView({ behavior: 'smooth'})
+
+}
+
+function resetOutput(){
+    document.getElementById('widthdoubletop').innerHTML = ""
+    document.getElementById('heightdoubletop').innerHTML = ""
+    document.getElementById('widthdoublebottom').innerHTML = ""
+    document.getElementById('heightdoublebottom').innerHTML = ""
+}
+
+</script>
+
+    <div style="margin:0 auto;text-align:center;width:400px;height:50px;border:5px solid #000; margin-top: 20px; margin-bottom: 20px;padding-bottom:75%;background-color:gray" id="rectangle">
+        <center>
+            <div id="widthdoubletop"></div>
+        </center>
+        <div id="top">TOP MAT</div>
+    
+        <div id="heightdoubletop"></div>
+    </div>
+    
+<p>
+    <div style="margin:0 auto;text-align:center;width:400px;height:50px;border:5px solid #000; margin-top: 20px; margin-bottom: 20px;padding-bottom:75%;background-color:gray" id="rectangle">
+    <center>
+        <div id="widthdoublebottom"></div>
+    </center>
+    <div id="bottom">BOTTOM MAT</div>
+    <div id="heightdoublebottom"></div>
+</div>
+
+</p>
+</body>
+
+</html>
