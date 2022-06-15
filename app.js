@@ -28,13 +28,6 @@ app.get('', (req, res) => {
     res.render('index')
 });
 
- app.get("/about", (req,res) => {
-    res.render('about', { title: 'About Page'});
-
-});
-
-
-
 app.get("/contact", (req,res) => {
     res.render('contact', { title: 'Contact Us'});
 
@@ -73,7 +66,18 @@ app.post('/contact', (req, res) => {
     })
 })
 
-  
+app.get("/singlemat", (req,res) => {
+    res.render('singlemat', { title: 'Single Mat'});
+
+});
+
+
+app.get("/about", (req,res) => {
+    res.render('about', { title: 'About Page'});
+
+});
+
+
 
 app.get("/documentation", (req,res) => {
     res.render('documentation', { title: 'Documentation'});

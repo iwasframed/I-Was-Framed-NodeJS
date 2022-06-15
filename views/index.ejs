@@ -1,244 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>I Was Framed - Calculator</title>
-
-
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900&display=swap" rel="stylesheet">
-
-        
-
-    </head>
-
 <body>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    <script>
-        //Get the button
-        var mybutton = document.getElementById("myBtn");
-        
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-        
-        function scrollFunction() {
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-          } else {
-            mybutton.style.display = "none";
-          }
-        }
-        
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
-        }
-        </script>  
-        
-<section>
-    
-    <form id="frm1" action="index.html" onreset="resetOutput()" method="post">
-
-<fieldset>
-
-<legend>
-
-I Was Framed Calculator
-
-</legend>
-
-
-
-<label for="frameWidth">Frame Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="frameWidth" id="frameWidth"><select name="frameWidthFraction" id="frameWidthFraction">
-    <option value="0">0</option>
-        <option value="0.0625">1/16</option>
-            <option value="0.0125">1/8</option>
-                <option value="0.1875">3/16</option>
-                <option value="0.25">1/4</option>
-                <option value="0.3125">5/16</option>
-                <option value="0.375">3/8</option>
-                <option value="0.4375">7/16</option>
-                <option value="0.50">1/2</option>
-                <option value="0.5625">9/16</option>
-                <option value="0.625">5/8</option>
-                <option value="0.6875">11/16</option>
-                <option value="0.75">3/4</option>
-                <option value="0.8125">3/16</option>
-                <option value="0.875">7/8</option> 
-                <option value="0.9375">15/16</option>
-</select>
-
-<label for="frameHeight">Frame Height:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="frameHeight" id="frameHeight"><select name="frameHeightFraction" id="frameHeightFraction">
-    
-    <option value="0">0</option>
-        <option value="0.0625">1/16</option>
-            <option value="0.0125">1/8</option>
-                <option value="0.1875">3/16</option>
-                <option value="0.25">1/4</option>
-                <option value="0.3125">5/16</option>
-                <option value="0.375">3/8</option>
-                <option value="0.4375">7/16</option>
-                <option value="0.50">1/2</option>
-                <option value="0.5625">9/16</option>
-                <option value="0.625">5/8</option>
-                <option value="0.6875">11/16</option>
-                <option value="0.75">3/4</option>
-                <option value="0.8125">3/16</option>
-                <option value="0.875">7/8</option>
-                <option value="0.9375">15/16</option>
-</select>
-
-
-
-<label for="pictureWidth">Picture Width:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="pictureWidth" id="pictureWidth"><select name="pictureWidthFraction" id="pictureWidthFraction">
-    
-    <option value="0">0</option>
-        <option value="0.0625">1/16</option>
-            <option value="0.0125">1/8</option>
-                <option value="0.1875">3/16</option>
-                <option value="0.25">1/4</option>
-                <option value="0.3125">5/16</option>
-                <option value="0.375">3/8</option>
-                <option value="0.4375">7/16</option>
-                <option value="0.50">1/2</option>
-                <option value="0.5625">9/16</option>
-                <option value="0.625">5/8</option>
-                <option value="0.6875">11/16</option>
-                <option value="0.75">3/4</option>
-                <option value="0.8125">3/16</option>
-                <option value="0.875">7/8</option>
-                <option value="0.9375">15/16</option>
-</select>
-
-<label for="pictureHeight">Picture Height:</label><input type="number" title="numbers should be in inches" onkeypress="return (event.which == 8 || event.which == 0 || event.which == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="pictureHeight" id="pictureHeight">
-
-
-<select name="pictureHeightFraction" id="pictureHeightFraction">
-   
-    <option value="0">0</option>
-        <option value="0.0625">1/16</option>
-            <option value="0.0125">1/8</option>
-                <option value="0.1875">3/16</option>
-                <option value="0.25">1/4</option>
-                <option value="0.3125">5/16</option>
-                <option value="0.375">3/8</option>
-                <option value="0.4375">7/16</option>
-                <option value="0.50">1/2</option>
-                <option value="0.5625">9/16</option>
-                <option value="0.625">5/8</option>
-                <option value="0.6875">11/16</option>
-                <option value="0.75">3/4</option>
-                <option value="0.8125">3/16</option>
-                <option value="0.875">7/8</option>
-                <option value="0.9375">15/16</option>
-</select><br>
-
-<label for="matOverlap">Mat Overlap:</label><input type="number" title="numbers should be in inches" onkeypress="(event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="matOverlap" id="matOverlap"><select name="matOverlapFraction" id="matOverlapFraction">
-    
-    <option value="0">0</option>
-        <option value="0.0625">1/16</option>
-            <option value="0.0125">1/8</option>
-                <option value="0.1875">3/16</option>
-                <option value="0.25">1/4</option>
-                <option value="0.3125">5/16</option>
-                <option value="0.375">3/8</option>
-                <option value="0.4375">7/16</option>
-                <option value="0.50">1/2</option>
-                <option value="0.5625">9/16</option>
-                <option value="0.625">5/8</option>
-                <option value="0.6875">11/16</option>
-                <option value="0.75">3/4</option>
-                <option value="0.8125">3/16</option>
-                <option value="0.875">7/8</option>
-                <option value="0.9375">15/16</option>
-</select>
-
-    <br>
-
-
-<br>
-<br>
-<input type="reset" value="Reset">
-<input type="button" onclick="calc()" value="Calculate" name="cmdCalc"/>
-
-</fieldset>
-
-</form>
-
-</section>
-
-<script src="https://iwasframed.com/calculator/fraction.js/index.js"></script>
-
-
-<script>
-
-function calc()
-
-{
-
-    var frameWidth = document.getElementById('frameWidth').value
-    frameWidth = parseInt(frameWidth)
-    
-    var frameWidthFraction = document.getElementById('frameWidthFraction').value
-    frameWidthFraction = parseFloat(frameWidthFraction)
-        
-    var frameHeight = document.getElementById('frameHeight').value
-    frameHeight = parseInt(frameHeight)
-
-    var frameHeightFraction = document.getElementById('frameHeightFraction').value
-    frameHeightFraction = parseFloat(frameHeightFraction)
-    
-    var pictureWidth = document.getElementById('pictureWidth').value
-    pictureWidth = parseInt(pictureWidth)
-
-    var pictureWidthFraction = document.getElementById('pictureWidthFraction').value
-    pictureWidthFraction = parseFloat(pictureWidthFraction)
-
-    var pictureHeight = document.getElementById('pictureHeight').value
-    pictureHeight = parseInt(pictureHeight)
-
-    var pictureHeightFraction = document.getElementById('pictureHeightFraction').value
-    pictureHeightFraction = parseFloat(pictureHeightFraction)
-
-    var matOverlap = document.getElementById('matOverlap').value
-    matOverlap = parseInt(matOverlap)
-
-    var matOverlapFraction = document.getElementById('matOverlapFraction').value
-    matOverlapFraction = parseFloat(matOverlapFraction)
-
-    if (isNaN(frameWidth) || isNaN(frameHeight) || isNaN(pictureWidth) || isNaN(pictureHeight) || isNaN(matOverlap)) {
-    alert('All fields are required!')
-    return
-}
-
-   var width = (1/2)*((frameHeight+frameHeightFraction)-(pictureHeight+pictureHeightFraction)+(matOverlap+matOverlapFraction));
-   var height = (1/2)*((frameWidth+frameWidthFraction)-(pictureWidth+pictureWidthFraction)+(matOverlap+matOverlapFraction));
-
-   document.getElementById('width').innerHTML = new Fraction(width).toString() + '"';
-   document.getElementById('height').innerHTML = new Fraction(height).toString() + '"';
-
-   document.getElementById('rectangle').scrollIntoView({ behavior: 'smooth'})
-
-}
-
-function resetOutput(){
-    document.getElementById('width').innerHTML = ""
-    document.getElementById('height').innerHTML = ""
-}
-
-</script>
-
-    <div style="margin:0 auto;text-align:center;width:400px;height:50px;border:5px solid #000; margin-top: 20px; margin-bottom: 50px;padding-bottom:75%;background-color:gray" id="rectangle">
-        <center>
-            <div id="width"></div>
-        </center>
-    
-        <div id="height"></div>
-    </div>
-
+    <h1 style="color: #4485b8;">Welcome to <span style="background-color: #4485b8; color: #ffffff; padding: 0 5px;">I Was FRAMED!</aspan></h1>
+<p><strong style="color: #000;">Introduction:</strong> Congratulations!  If you are seeing this, then you have successfully installed this application.&nbsp;</p>
+<h4>Use the table below to understand the features:</h4>
+<table class="editorDemoTable" style="vertical-align: top;">
+<thead>
+<tr>
+<td><span style="font-weight: bold; color: #000; text-decoration: underline;">Options</span></td>
+<td><span style="font-weight: bold; color: #000; text-decoration: underline;">Description</span></td>
+<td><span style="font-weight: bold; color: #000; text-decoration: underline;">Explanation</span></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="min-width: 140px;"><strong>Single Mat</strong></td>
+<td>Using the <span style="font-weight: bold; color: #000; text-decoration: underline;">Single Mat</span> option calculates the measurements of where to make your mat cut when using one matboard.</td>
+<td>You will need to know the following:
+<div style="height: 100%; width: 100%; border: 3px dotted #888; background-color: rgba(0,0,0,0.2);"><i>F</i>rame <i>W</i>idth, <i>F</i>rame <i>H</i>eight, <i>P</i>icture <i>W</i>idth, <i>P</i>icture <i>H</i>eight, and <i>M</i>at <i>O</i>verlap.</div>
+</td>
+</tr>
+<tr>
+<td><strong>Double Mat</strong></td>
+<td style="background-color: rgba(0,0,0,0.1);">
+<p>Using the <span style="font-weight: bold; color: #000; text-decoration: underline;">Double Mat</span> option calculates the measurements of where to make your mat cut when using two matboards.</p>
+</td>
+<td><span style="line-height: 35px;">&larr;| &nbsp;You need to know the following:  <i>F</i>rame <i>W</i>idth, <i>F</i>rame <i>H</i>eight, <i>P</i>icture <i>W</i>idth, <i>P</i>icture <i>H</i>eight, and <i><u>Bottom</u></i> <i>M</i>at <i>O</i>verlap.&nbsp; &rarr;|</span></td>
+</tr>
+<tr>
+<td><strong>Triple Mat </strong></td>
+<td>Using the <span style="font-weight: bold; color: #000; text-decoration: underline;">Triple Mat</span> option calculates the measurements of where to make your mat cut when using three matboards.</td>
+<td>You need to know the following:  <i>F</i>rame <i>W</i>idth, <i>F</i>rame <i>H</i>eight, <i>P</i>icture <i>W</i>idth, <i>P</i>icture <i>H</i>eight, <i><u>Middle Mat</u></i> and <i>B</i>ottom <i>M</i>at <i>O</i>verlap.</td>
+</tr>
+<tr>
+<td><strong>Symbols</strong></td>
+<td>
+<table style="margin: auto; box-shadow: 3px 3px 10px #000;" border="1">
+<tbody>
+<tr style="border-top: 2px solid #555;">
+<td style="border: 2px dashed #555;"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>Width</mi>
+</math>
+</td>
+<td style="border: 2px dashed #555;"><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>Height</mi>
+  </math></td>
+<td style="border: 2px dashed #555;" ><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>Overlap</mi>
+  </math></td>
+</tr>
+<tr style="background-color: rgba(0,0,0,0.1);">
+<td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>w</mi>
+</math>
+</center></td>
+<td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>h</mi>
+</math>
+</center></td>
+<td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>o</mi>
+</math>
+</center></td>
+</tr>
+</tbody>
+</table>
+<p>
+    <table style="margin: auto; box-shadow: 3px 3px 10px #000;" border="1">
+        <tbody>
+        <tr style="border-top: 2px solid #555;">
+        <td style="border: 2px dashed #555;"><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mi>Frame</mi>
+        </math>
+        </td>
+        <td style="border: 2px dashed #555;"><math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>Frame</mi>
+          </math></td>
+        <td style="border: 2px dashed #555;" ><math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mi>Bottom</mi>
+          </math></td>
+        </tr>
+        <tr style="background-color: rgba(0,0,0,0.1);">
+        <td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+                <mi>w</mi>
+                <mi>f</mi>
+              </msub>
+        </math>
+        </center></td>
+        <td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+                <mi>h</mi>
+                <mi>f</mi>
+              </msub>
+        </math>
+        </center></td>
+        <td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+            <msub>
+                <mi>m</mi>
+                <mi>b</mi>
+              </msub>
+        </math>
+        </center></td>
+        </tr>
+        </tbody>
+        </table>
+</p>
+<table style="margin: auto; box-shadow: 3px 3px 10px #000;" border="1">
+    <tbody>
+    <tr style="border-top: 2px solid #555;">
+    <td style="border: 2px dashed #555;"><math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mi>Picture</mi>
+    </math>
+    </td>
+    <td style="border: 2px dashed #555;"><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>Picture</mi>
+      </math></td>
+    <td style="border: 2px dashed #555;" ><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>Middle</mi>
+      </math></td>
+    </tr>
+    <tr style="background-color: rgba(0,0,0,0.1);">
+    <td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+            <mi>w</mi>
+            <mi>p</mi>
+          </msub>
+    </math>
+    </center></td>
+    <td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+            <mi>h</mi>
+            <mi>p</mi>
+          </msub>
+    </math>
+    </center></td>
+    <td><center><math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+            <mi>m</mi>
+            <mi>m</mi>
+          </msub>
+    </math>
+    </center></td>
+    </tr>
+    </tbody>
+    </table>
+</td>
+<td>
+<ol>
+<li>These are all the requuired elements for calculating either a Single Mat, Double Mat, or Triple Mat project.</li>
+<li>During a Double Mat calculation, then Mat Overlap becomes Bottom Mat (Overlap).</li>
+<li>Finally, a Triple Mat calculation requires the addition of a Middle Mat including the elements of a Double Mat.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>The best way to get started is by reading the <span style="background-color: #4485b8; color: #fff; display: inline-block; padding: 2px 8px; font-weight: bold; border-radius: 5px;">Documentation</span> button above.</p>
+<p><em>You can always access <strong>menu items</strong> directly.</em></p>
+<hr />
 </body>
-
-</html>

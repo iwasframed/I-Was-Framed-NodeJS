@@ -15,7 +15,6 @@
     </head>
 
 <body>
-    
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     <script>
         //Get the button
@@ -47,7 +46,7 @@
 
 <legend>
 
-Triple Mat Calculator
+Single Mat Calculator
 
 </legend>
 
@@ -137,7 +136,7 @@ Triple Mat Calculator
                 <option value="0.9375">15/16</option>
 </select><br>
 
-<label for="middleMat">Middle Mat:</label><input type="number" title="numbers should be in inches" onkeypress="(event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="middleMat" id="middleMat"><select name="middleMatFraction" id="middleMatFraction">
+<label for="matOverlap">Mat Overlap:</label><input type="number" title="numbers should be in inches" onkeypress="(event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="matOverlap" id="matOverlap"><select name="matOverlapFraction" id="matOverlapFraction">
     
     <option value="0">0</option>
         <option value="0.0625">1/16</option>
@@ -158,33 +157,12 @@ Triple Mat Calculator
 </select>
 
     <br>
-    <label for="bottomMat">Bottom Mat:</label><input type="number" title="numbers should be in inches" onkeypress="(event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step="any" min="0" name="bottomMat" id="bottomMat"><select name="bottomMatFraction" id="bottomMatFraction">
-    
-        <option value="0">0</option>
-            <option value="0.0625">1/16</option>
-                <option value="0.0125">1/8</option>
-                    <option value="0.1875">3/16</option>
-                    <option value="0.25">1/4</option>
-                    <option value="0.3125">5/16</option>
-                    <option value="0.375">3/8</option>
-                    <option value="0.4375">7/16</option>
-                    <option value="0.50">1/2</option>
-                    <option value="0.5625">9/16</option>
-                    <option value="0.625">5/8</option>
-                    <option value="0.6875">11/16</option>
-                    <option value="0.75">3/4</option>
-                    <option value="0.8125">3/16</option>
-                    <option value="0.875">7/8</option>
-                    <option value="0.9375">15/16</option>
-    </select>
-    
-        <br>
+
 
 <br>
 <br>
 <input type="button" onclick="calc()" value="Calculate" name="cmdCalc"/>
 <input type="reset" value="Reset">
-
 </fieldset>
 
 </form>
@@ -224,89 +202,49 @@ function calc()
     var pictureHeightFraction = document.getElementById('pictureHeightFraction').value
     pictureHeightFraction = parseFloat(pictureHeightFraction)
 
-    var middleMat = document.getElementById('middleMat').value
-    middleMat = parseInt(middleMat)
+    var matOverlap = document.getElementById('matOverlap').value
+    matOverlap = parseInt(matOverlap)
 
-    var middleMatFraction = document.getElementById('middleMatFraction').value
-    middleMatFraction = parseFloat(middleMatFraction)
+    var matOverlapFraction = document.getElementById('matOverlapFraction').value
+    matOverlapFraction = parseFloat(matOverlapFraction)
 
-    var bottomMat = document.getElementById('bottomMat').value
-    bottomMat = parseInt(bottomMat)
-
-    var bottomMatFraction = document.getElementById('bottomMatFraction').value
-    bottomMatFraction = parseFloat(bottomMatFraction)
-
-    if (isNaN(frameWidth) || isNaN(frameHeight) || isNaN(pictureWidth) || isNaN(pictureHeight) || isNaN(middleMat) || isNaN(bottomMat)) {
+    if (isNaN(frameWidth) || isNaN(frameHeight) || isNaN(pictureWidth) || isNaN(pictureHeight) || isNaN(matOverlap)) {
     alert('All fields are required!')
     return
 }
 
-    var widthtripletop = ((frameHeight+frameHeightFraction)-(pictureHeight+pictureHeightFraction))/2-(middleMat+middleMatFraction);
-    var heighttripletop = ((frameWidth+frameWidthFraction)-(pictureWidth+pictureWidthFraction))/2-(middleMat+middleMatFraction);
-    var widthtriplemiddle = ((frameHeight+frameHeightFraction)-(pictureHeight+pictureHeightFraction))/2;
-    var heighttriplemiddle = ((frameWidth+frameWidthFraction)-(pictureWidth+pictureWidthFraction))/2;
-    var widthtriplebottom = ((frameHeight+frameHeightFraction)-(pictureHeight+pictureHeightFraction))/2+(bottomMat+bottomMatFraction);
-    var heighttriplebottom = ((frameWidth+frameWidthFraction)-(pictureWidth+pictureWidthFraction))/2+(bottomMat+bottomMatFraction);
-   
-    document.getElementById('widthtripletop').innerHTML = new Fraction(widthtripletop).toString() + '"';
-    document.getElementById('heighttripletop').innerHTML = new Fraction(heighttripletop).toString() + '"';
-    document.getElementById('widthtriplemiddle').innerHTML = new Fraction(widthtriplemiddle).toString() + '"';
-    document.getElementById('heighttriplemiddle').innerHTML = new Fraction(heighttriplemiddle).toString() + '"';
-    document.getElementById('widthtriplebottom').innerHTML = new Fraction(widthtriplebottom).toString() + '"';
-    document.getElementById('heighttriplebottom').innerHTML = new Fraction(heighttriplebottom).toString() + '"';
+   var width = (1/2)*((frameHeight+frameHeightFraction)-(pictureHeight+pictureHeightFraction)+(matOverlap+matOverlapFraction));
+   var height = (1/2)*((frameWidth+frameWidthFraction)-(pictureWidth+pictureWidthFraction)+(matOverlap+matOverlapFraction));
 
-    document.getElementById('rectangle').scrollIntoView({ behavior: 'smooth'})
+   document.getElementById('width').innerHTML = new Fraction(width).toString() + '"';
+   document.getElementById('height').innerHTML = new Fraction(height).toString() + '"';
 
-    
-    }
+   document.getElementById('rectangle').scrollIntoView({ behavior: 'smooth'})
+
+}
 
 </script>
 
 <div class="triple" id="rectangle">
 
-    <div id="recttop">
+    <div id="mat">
 
         <center>
-            <div id="widthtripletop"></div>
+            <div id="width"></div>
         </center>
-        <div id="heighttripletop">
+        <div id="height">
                    
     </div>
-    <center><div id="matlabel">TOP MAT</div></center>
+    <center><div id="matlabelsingle">MAT</div></center>
         </div>
-        <div id="rectmiddle">
-        <center>
-            <div id="widthtriplemiddle"></div>
-        </center>
-        <div id="heighttriplemiddle">
-            
-        </div>
-        <center><div id="matlabel">MIDDLE MAT</div></center>
-    </div>
-    <div id="rectbottom">
-        <center>
-            <div id="widthtriplebottom"></div>
-        </center>
-        <div id="heighttriplebottom">
-            
-        </div>
-        <center><div id="matlabel">BOTTOM MAT</div></center>
-    </div>
-      </div>
+
+
   <script>
-    function resetOutput(){
-
-        document.getElementById('widthtripletop').innerHTML = ""
-        document.getElementById('heighttripletop').innerHTML = ""
-        document.getElementById('widthtriplemiddle').innerHTML = ""
-        document.getElementById('heighttriplemiddle').innerHTML = ""
-        document.getElementById('widthtriplebottom').innerHTML = ""
-        document.getElementById('heighttriplebottom').innerHTML = ""
-
-        
-    }
-</script> 
-    
+      function resetOutput(){
+    document.getElementById('width').innerHTML = ""
+    document.getElementById('height').innerHTML = ""
+}
+  </script>      
 </body>
 
 </html>
