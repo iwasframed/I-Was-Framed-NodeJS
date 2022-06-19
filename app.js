@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session');
@@ -66,12 +66,6 @@ app.post('/contact', (req, res) => {
     })
 })
 
-app.get("/singlemat", (req,res) => {
-    res.render('singlemat', { title: 'Single Mat'});
-
-});
-
-
 app.get("/about", (req,res) => {
     res.render('about', { title: 'About Page'});
 
@@ -90,6 +84,11 @@ app.get("/math", (req,res) => {
 
 app.get("/api", (req,res) => {
     res.render('api', { title: 'API Instructions'});
+
+});
+
+app.get("/singlemat", (req,res) => {
+    res.render('singlemat', { title: 'Single Mat'});
 
 });
 

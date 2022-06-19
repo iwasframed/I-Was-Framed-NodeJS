@@ -1,6 +1,6 @@
 body {
     background-color: #555;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 a:hover, a:visited, a:link, a:active
@@ -18,11 +18,13 @@ a:hover, a:visited, a:link, a:active
 header, footer {
     background-color: ghostwhite;
     padding: 20px;
+    max-width: 60rem;
 }
 
 main {
     background-color: ghostwhite;
     padding: 50px;
+    max-width: 100rem;
 }
 
 .layout-sidebar {
@@ -99,7 +101,7 @@ fieldset {
   padding: 1em 2em;
   border: solid 1px #ccc;
   border-radius: 6px;
-  min-width: P 200px;
+  min-width: 200px;
 }
 
 legend {
@@ -153,13 +155,13 @@ input {
 input[type="number"],
 input[type="text"],
 input[type="email"] {
-  font-size:24px;
-  width: 10em;
+  font-size:20px;
+  width: 8em;
   background-color: #D3D3D3
 }
 
 textarea {
-  font-size:24px;
+  font-size:20px;
   min-height: 8em;
   min-width: 100%;
   padding: .5em;
@@ -184,6 +186,11 @@ input[type="radio"]+label {
   margin-top: 0;
 }
 
+.flex-col {
+  display: flex;
+  display: -webkit-flex;
+}
+
 input[type="radio"] {
   margin-left: 1.5em;
   margin-right: 0;
@@ -197,6 +204,12 @@ input[type="radio"]:first-of-type {
   text-align: left;
   margin-top: 225px;
   margin-left: 4px;
+}
+
+.responsive {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
 }
 
 #matlabelsingle {
@@ -302,9 +315,13 @@ input[type="reset"] {
 
 /* Large screen rules */
 
-@media screen and (min-width: 500px) {
-  legend {
-    font-size: 1.75em;
+@media screen and (min-width: 600px) {
+    .responsive {
+      width:  100%;
+      height:  auto;
+    }
+    legend {
+    font-size: 1.75m;
   }
   fieldset {
     width: 40%;
